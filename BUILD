@@ -1,5 +1,5 @@
 go_binary(
     name = 'zfetch',
-    srcs = ['main.go', 'utils.go'],
+    srcs = ['src/main.go', 'src/utils.go'],
     visibility = ['PUBLIC'],
 )
