@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 	"os/exec"
+	"regexp"
 	"strings"
 )
 
@@ -14,10 +15,7 @@ type OsInfo struct {
 	Kernel	 	 string
 	CPU		 	 string
 	Cores	 	 string
-	CpuTemp 	 string
-	CpuUsage	 string
 	GPU		 	 string
-	GpuUsage	 string
 	Shell	 	 string
 	Terminal 	 string
 	Hostname 	 string
@@ -101,6 +99,30 @@ func (oi *OsInfo) GetInfo() {
 	}
 
 	_ = file.Close()
+
+	// GPU
+	gpuRegexp, _ := regexp.Compile(`(NVIDIA)|(3D)|(VGA)|(Display)|(ATI)\w+`)
+	quotesRegexp, _ := regexp.Compile(`"(.*?)"`)
+
+	res, err = exec.Command("lspci", "-mm").Output()
+	lspciInfo := strings.Split(string(res), "\n")
+
+	var gpu string
+	if err != nil {
+		gpu = ""
+	} else {
+		foundGPUs := []string{}
+
+		for _, v := range lspciInfo {
+			if gpuRegexp.MatchString(v) {
+				foundGPUs = append(foundGPUs, v)
+			}
+		}
+
+		gpu = strings.Replace(quotesRegexp.FindAllString(foundGPUs[len(foundGPUs) - 1], -1)[2], `"`, "", -1)
+	}
+
+	oi.GPU = gpu
 }
 
 func GetDefaultResponse() (string, error) {
@@ -115,6 +137,7 @@ func GetDefaultResponse() (string, error) {
 	finalResponse += fmt.Sprintf("Terminal: %s\n", oi.Terminal)
 	finalResponse += fmt.Sprintf("CPU: %s\n", oi.CPU)
 	finalResponse += fmt.Sprintf("Cores: %s\n", oi.Cores)
+	finalResponse += fmt.Sprintf("GPU: %s\n", oi.GPU)
 
 	return finalResponse, nil
 }
