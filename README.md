@@ -9,3 +9,17 @@ Because I am bored that's all
 
 ## Is it usable?
 You wish
+
+## How to build?
+```
+plz build
+```
+
+or
+
+```
+./pleasew build
+```
+
+## Why please build?
+Because it's cool (ง°ل͜°)ง
