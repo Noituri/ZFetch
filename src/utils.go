@@ -101,7 +101,7 @@ func (oi *OsInfo) GetInfo() {
 	_ = file.Close()
 
 	// GPU
-	gpuRegexp, _ := regexp.Compile(`(NVIDIA)|(3D)|(VGA)|(Display)|(ATI)\w+`)
+	gpuRegexp, _ := regexp.Compile(`(GeForce)|(3D)|(VGA)|(Display)|(ATI)\w+`)
 	quotesRegexp, _ := regexp.Compile(`"(.*?)"`)
 
 	res, err = exec.Command("lspci", "-mm").Output()
