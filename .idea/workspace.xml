@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="ec0f213a-a154-445d-813b-b196146d22d1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BUILD" beforeDir="false" afterPath="$PROJECT_DIR$/BUILD" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/zfetch.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -27,8 +35,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/utils.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="139" column="52" selection-start-line="139" selection-start-column="52" selection-end-line="139" selection-end-column="52" />
+            <state relative-caret-position="192">
+              <caret line="120" selection-start-line="120" selection-end-line="120" />
             </state>
           </provider>
         </entry>
@@ -60,7 +68,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="12" />
     <option name="y" value="12" />
     <option name="width" value="1338" />
@@ -82,10 +90,6 @@
               <item name="zfetch" type="b2602c69:ProjectViewProjectNode" />
               <item name="zfetch" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="zfetch" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
@@ -117,11 +121,28 @@
       </list>
     </option>
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ec0f213a-a154-445d-813b-b196146d22d1" name="Default Changelist" comment="" />
+      <created>1557312392345</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1557312392345</updated>
+      <workItem from="1557312410236" duration="80000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="80000" />
+  </component>
   <component name="ToolWindowManager">
-    <frame x="12" y="12" width="1338" height="740" extended-state="1" />
+    <frame x="12" y="12" width="1338" height="740" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2616099" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27476782" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -152,16 +173,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/main.go" />
     <entry file="file://$PROJECT_DIR$/utils.go" />
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="160">
-            <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md" />
     <entry file="file://$PROJECT_DIR$/BUILD">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="32">
@@ -171,8 +183,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/utils.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="139" column="52" selection-start-line="139" selection-start-column="52" selection-end-line="139" selection-end-column="52" />
+        <state relative-caret-position="192">
+          <caret line="120" selection-start-line="120" selection-end-line="120" />
         </state>
       </provider>
     </entry>
