@@ -3,10 +3,12 @@ package main
 import (
 	"bufio"
 	"fmt"
+	sigar "github.com/cloudfoundry/gosigar"
 	"log"
 	"os"
 	"os/exec"
 	"regexp"
+	"strconv"
 	"strings"
 )
 
@@ -19,10 +21,16 @@ type OsInfo struct {
 	Shell	 	 string
 	Terminal 	 string
 	Hostname 	 string
-	UsedRAM  	 string
 	MaxRam	 	 string
+	UsedRAM  	 string
+	MaxStorage	 string
 	UsedStorage	 string
 	Username	 string
+	Uptime		 string
+}
+
+func format(val uint64) uint64 {
+	return val / 1024 / 1024
 }
 
 func (oi *OsInfo) GetInfo() {
@@ -101,7 +109,7 @@ func (oi *OsInfo) GetInfo() {
 	_ = file.Close()
 
 	// GPU
-	gpuRegexp, _ := regexp.Compile(`(NVIDIA)|(3D)|(VGA)|(Display)|(ATI)\w+`)
+	gpuRegexp, _ := regexp.Compile(`(GeForce)|(3D)|(VGA)|(Display)|(ATI)\w+`)
 	quotesRegexp, _ := regexp.Compile(`"(.*?)"`)
 
 	res, err = exec.Command("lspci", "-mm").Output()
@@ -123,6 +131,14 @@ func (oi *OsInfo) GetInfo() {
 	}
 
 	oi.GPU = gpu
+
+	// Max RAM & Used RAM
+	mem := sigar.Mem{}
+	_ = mem.Get()
+
+	oi.MaxRam = strconv.FormatInt(int64(format(mem.Total)), 10)
+	oi.UsedRAM = strconv.FormatInt(int64(format(mem.ActualUsed)), 10)
+
 }
 
 func GetDefaultResponse() (string, error) {
@@ -138,6 +154,7 @@ func GetDefaultResponse() (string, error) {
 	finalResponse += fmt.Sprintf("CPU: %s\n", oi.CPU)
 	finalResponse += fmt.Sprintf("Cores: %s\n", oi.Cores)
 	finalResponse += fmt.Sprintf("GPU: %s\n", oi.GPU)
+	finalResponse += fmt.Sprintf("RAM: %s/%s\n",oi.UsedRAM, oi.MaxRam)
 
 	return finalResponse, nil
 }
