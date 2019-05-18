@@ -23,8 +23,8 @@ type OsInfo struct {
 	Hostname 	 string
 	MaxRam	 	 string
 	UsedRAM  	 string
-	MaxStorage	 string
-	UsedStorage	 string
+	//MaxStorage	 string
+	//UsedStorage	 string
 	Username	 string
 	Uptime		 string
 }
@@ -139,6 +139,11 @@ func (oi *OsInfo) GetInfo() {
 	oi.MaxRam = strconv.FormatInt(int64(format(mem.Total)), 10)
 	oi.UsedRAM = strconv.FormatInt(int64(format(mem.ActualUsed)), 10)
 
+	// Uptime
+	uptime := sigar.Uptime{}
+	_ = uptime.Get()
+
+	oi.Uptime = uptime.Format()
 }
 
 func GetDefaultResponse() (string, error) {
@@ -154,7 +159,8 @@ func GetDefaultResponse() (string, error) {
 	finalResponse += fmt.Sprintf("CPU: %s\n", oi.CPU)
 	finalResponse += fmt.Sprintf("Cores: %s\n", oi.Cores)
 	finalResponse += fmt.Sprintf("GPU: %s\n", oi.GPU)
-	finalResponse += fmt.Sprintf("RAM: %s/%s\n",oi.UsedRAM, oi.MaxRam)
+	finalResponse += fmt.Sprintf("RAM: %s/%s\n", oi.UsedRAM, oi.MaxRam)
+	finalResponse += fmt.Sprintf("Uptime: %s\n", oi.Uptime)
 
 	return finalResponse, nil
 }
