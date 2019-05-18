@@ -12,14 +12,5 @@ You wish
 
 ## How to build?
 ```
-plz build
+go build .
 ```
-
-or
-
-```
-./pleasew build
-```
-
-## Why please build?
-Because it's cool (ง°ل͜°)ง
