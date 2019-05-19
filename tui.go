@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/base64"
+	"fmt"
 	"github.com/disintegration/imaging"
 	ui "github.com/gizak/termui/v3"
 	"github.com/gizak/termui/v3/widgets"
@@ -13,7 +14,7 @@ import (
 )
 
 const TEST_LOGO = `iVBORw0KGgoAAAANSUhEUgAAAFAAAABNCAMAAAAGhxPaAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAhFBMVEU1v1wAAAA1v1w1v1w1v1w1v1w1v1w1v1w1v1w1v1w1v1w1v1w1v1w1v1w1v1w1v1w1v1w1v1w1v1w1v1w1v1w1v1w1v1w1v1w1v1w1v1w1v1w1v1w1v1w1v1w1v1w1v1w1v1w1v1w1v1w1v1w1v1w1v1w1v1w1v1w1v1w1v1w1v1wAAACLICWOAAAAKnRSTlMAAOAf/Ozp6evNHOVDKCkqJAUCEhUUGrrW1O3v0B0uLykGEREPAs/Qthmsk4gjAAAAAWJLR0QB/wIt3gAAAAd0SU1FB+MFEQgvL8ufKIoAAACWSURBVFjD7dNZCsJAEEXRMnGeTWIS53nc/wJ1AdWCT9AI9/4WfaCg2u7vF8VmcRQYGiAgICAgICDgx2C90WwFane6AtjrD4aBRuOJAD7Xqr2oGqAlaTZ1ytJEW9nyopw5lUUugqFH0tkA/hKcuy2WKxVcu222OxUUvteXwb3b4XhSVz67Xa63ypwNICAgICAgICDgP4MPIjViHiX1RUQAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTktMDUtMTdUMDg6NDc6NDctMDQ6MDCAF1wrAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE5LTA1LTE3VDA4OjQ3OjQ3LTA0OjAw8UrklwAAAABJRU5ErkJggg==`
-func GetMainGrid() *ui.Grid {
+func GetMainGrid(data OsInfo) *ui.Grid {
 	grid := ui.NewGrid()
 	termWidth, _ := ui.TerminalDimensions()
 	grid.SetRect(0, 0, termWidth, int(float64(termWidth) / 3.5))
@@ -32,13 +33,29 @@ func GetMainGrid() *ui.Grid {
 
 	p := widgets.NewParagraph()
 
-	p.Text = "noituri@me\n" +
-		"OS: Manjaro Linux\n" +
-		"CPU: intel i3\n" +
-		"Cores: 4\n" +
-		"GPU: 920M\n" +
-		"Terminal: st\n" +
-		"Shell: zsh"
+	p.Text = fmt.Sprintf("%s@%s\n" +
+		"OS: %s\n" +
+		"Kernel: %s\n" +
+		"Uptime: %s\n" +
+		"CPU: %s\n" +
+		"Cores: %s\n" +
+		"GPU: %s\n" +
+		"Terminal: %s\n" +
+		"Shell: %s\n" +
+		"RAM: %s/%s\n",
+		data.Username,
+		data.Hostname,
+		data.OS,
+		data.Kernel,
+		data.Uptime,
+		data.CPU,
+		data.Cores,
+		data.GPU,
+		data.Terminal,
+		data.Shell,
+		data.UsedRAM,
+		data.MaxRam,
+	)
 
 	p.SetRect(0, 0, 25, 5)
 	p.PaddingLeft = termWidth / 2 - 5
@@ -63,7 +80,10 @@ func StartTui() {
 
 	defer ui.Close()
 
-	ui.Render(GetMainGrid())
+	data := OsInfo{}
+	data.GetInfo()
+
+	ui.Render(GetMainGrid(data))
 
 	for {
 		select {
@@ -73,7 +93,7 @@ func StartTui() {
 				return
 			case "<Resize>":
 				ui.Clear()
-				ui.Render(GetMainGrid())
+				ui.Render(GetMainGrid(data))
 			}
 		}
 	}
