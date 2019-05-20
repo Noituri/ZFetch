@@ -10,6 +10,10 @@ Because I am bored that's all
 ## Is it usable?
 You wish
 
+## Features:
+- clicker mode
+- bugs
+
 ## How to build?
 ```
 go build .
