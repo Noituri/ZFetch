@@ -102,6 +102,89 @@ $$:      $$.   -    ,d$$'
        '"Y$b._
           '"""`
 
+const NIXOS = `
+          ::::.    ':::::     ::::'
+          ':::::    ':::::.  ::::'
+            :::::     '::::.:::::
+      .......:::::..... ::::::::
+     ::::::::::::::::::. ::::::    ::::.
+    ::::::::::::::::::::: :::::.  .::::'
+           .....           ::::' :::::'
+          :::::            '::' :::::'
+ ........:::::               ' :::::::::::.
+:::::::::::::                 :::::::::::::
+ ::::::::::: ..              :::::
+     .::::: .:::            :::::
+    .:::::  :::::          '''''    .....
+    :::::   ':::::.  ......:::::::::::::'
+     :::     ::::::. ':::::::::::::::::'
+            .:::::::: '::::::::::
+           .::::''::::.     '::::.
+          .::::'   ::::.     '::::.
+         .::::      ::::      '::::.`
+
+const MX = `
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNMMMMMMMMM
+MMMMMMMMMMNs..yMMMMMMMMMMMMMm: +NMMMMMMM
+MMMMMMMMMN+    :mMMMMMMMMMNo' -dMMMMMMMM
+MMMMMMMMMMMs.   'oNMMMMMMh- 'sNMMMMMMMMM
+MMMMMMMMMMMMN/    -hMMMN+  :dMMMMMMMMMMM
+MMMMMMMMMMMMMMh-    +ms. .sMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMN+'   '  +NMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMNMMd:    .dMMMMMMMMMMMMMMM
+MMMMMMMMMMMMm/-hMd-     'sNMMMMMMMMMMMMM
+MMMMMMMMMMNo   -' :h/    -dMMMMMMMMMMMM
+MMMMMMMMMd:       /NMMh-   '+NMMMMMMMMMM
+MMMMMMMNo':mMMN+'   '-hMMMMMMMM
+MMMMMMh.            'oNMMd:    '/mMMMMMM
+MMMMm/                -hMd-      'sNMMMM
+MMNs'                   -          :dMMM
+Mm:                                 'oMM
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+`
+
+const ELEMENTARY = `
+         eeeeeeeeeeeeeeeee
+      eeeeeeeeeeeeeeeeeeeeeee
+    eeeee  eeeeeeeeeeee   eeeee
+  eeee   eeeee       eee     eeee
+ eeee   eeee          eee     eeee
+eee    eee            eee       eee
+eee   eee            eee        eee
+ee    eee           eeee       eeee
+ee    eee         eeeee      eeeeee
+ee    eee       eeeee      eeeee ee
+eee   eeee   eeeeee      eeeee  eee
+eee    eeeeeeeeee     eeeeee    eee
+ eeeeeeeeeeeeeeeeeeeeeeee    eeeee
+  eeeeeeee eeeeeeeeeeee      eeee
+    eeeee                 eeeee
+      eeeeeee         eeeeeee
+         eeeeeeeeeeeeeeeee
+`
+
+const UBUNTU = `
+            .-/+oossssoo+/-.
+        ':+ssssssssssssssssss+:'
+      -+ssssssssssssssssssyyssss+-
+    .ossssssssssssssssssdMMMNysssso.
+   /ssssssssssshdmmNNmmyNMMMMhssssss/
+  +ssssssssshmydMMMMMMMNddddyssssssss+
+ /sssssssshNMMMyhhyyyyhmNMMMNhssssssss/
+.ssssssssdMMMNhsssssssssshNMMMdssssssss.
++sssshhhyNMMNyssssssssssssyNMMMysssssss+
+ossyNMMMNyMMhsssssssssssssshmmmhssssssso
+ossyNMMMNyMMhsssssssssssssshmmmhssssssso
++sssshhhyNMMNyssssssssssssyNMMMysssssss+
+.ssssssssdMMMNhsssssssssshNMMMdssssssss.
+ /sssssssshNMMMyhhyyyyhdNMMMNhssssssss/
+  +sssssssssdmydMMMMMMMMddddyssssssss+
+   /ssssssssssshdmNNNNmyNMMMMhssssss/
+    .ossssssssssssssssssdMMMNysssso.
+      -+sssssssssssssssssyyyssss+-
+        ':+ssssssssssssssssss+:'
+            .-/+oossssoo+/-.`
+
 func GetASCII(os string) string {
 	os = strings.TrimSpace(strings.ToLower(os))
 
@@ -115,6 +198,14 @@ func GetASCII(os string) string {
 		return ARCH
 	} else if strings.Contains(os, "debian") {
 		return DEBIAN
+	} else if strings.Contains(os, "nixos") {
+		return NIXOS
+	} else if strings.Contains(os, "mx") {
+		return MX
+	} else if strings.Contains(os, "elementary") {
+		return ELEMENTARY
+	} else if strings.Contains(os, "ubuntu") {
+		return UBUNTU
 	} else {
 		return `¯\_(ツ)_/¯`
 	}
