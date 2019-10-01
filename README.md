@@ -1,5 +1,5 @@
 # ZFetch (W.I.P.)
-> Do not use it. It does not work
+> Do not use it. It does not work.
 
 ## What is it?
 It's next neofetch/screenfetch-like program that nobody needs.
